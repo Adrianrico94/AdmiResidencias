@@ -44,13 +44,14 @@
                             </div>
 
                             <!-- Botón de inicio de sesión -->
-                            <div class="d-grid">
-                                <button type="submit" class="btn btn-primary mb-2">Iniciar Sesión</button>
-                            </div>
+                            <div class="d-grid"> <a href="AppProfesores.html" class="btn btn-primary mb-2">Iniciar Sesión</a>
 
                             <!-- Botón de regresar -->
                             <div class="d-grid">
                                 <button type="button" class="btn btn-outline-danger" onclick="window.history.back();">Regresar</button>
+                            </div>
+                            <div class="d-grid">
+                                <button type="button" class="btn btn-register" onclick="window.history.back();">Regístrate</button>
                             </div>
                         </form>
                     </div>
@@ -58,6 +59,38 @@
             </div>
         </div>
     </div>
+
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Launch demo modal
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
 
     <!-- Enlace a Bootstrap JS y dependencias de Popper -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>

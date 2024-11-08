@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Profesores</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+  <style>
+    /* Barra de navegación fija */
+    .navbar-custom {
+      background-color: #f8f9fa;
+      position: sticky;
+      /* Esto hace que se quede fija en la parte superior */
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar-custom .nav-link,
+    .navbar-custom .navbar-brand {
+      color: #000;
+    }
+
+    .search-bar {
+      max-width: 200px;
+    }
+
+    .btn-search {
+      background-color: #28a745;
+      color: white;
+    }
+
+    .btn-register {
+      background-color: #007bff;
+      color: white;
+    }
+
+    .profile-name {
+      color: #000;
+      font-weight: bold;
+    }
+
+    /* Estilos para el menú lateral estilo Teams */
+    .sidebar {
+      position: fixed;
+      /* Esto hace que la barra lateral se quede fija */
+      height: 100vh;
+      width: 80px;
+      background-color: #1b1e21;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 20px;
+      z-index: 999;
+      /* Asegura que la barra lateral esté encima del contenido */
+    }
+
+    .sidebar a {
+      color: #b0b3b8;
+      font-size: 14px;
+      text-decoration: none;
+      margin: 20px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: color 0.3s ease, background-color 0.3s ease;
+      width: 100%;
+      padding: 10px 0;
+    }
+
+    .sidebar a i {
+      font-size: 24px;
+      margin-bottom: 5px;
+    }
+
+    .sidebar a:hover,
+    .sidebar a.active {
+      color: #ffffff;
+      background-color: #3a3f44;
+      border-radius: 10px;
+    }
+
+    /* Espacio para el contenido principal */
+    .content {
+      flex-grow: 1;
+      padding: 20px;
+      background-color: #f8f9fa;
+      margin-left: 80px;
+      /* Para que el contenido no se solape con la barra lateral */
+      margin-top: 70px;
+      /* Ajuste para evitar que el contenido quede debajo de la barra de navegación fija */
+    }
+
+    /* Estilos personalizados para el footer */
+    footer {
+      background-color: #1b1e21;
+      color: white;
+    }
+
+    footer a {
+      color: white;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: #adb5bd;
+    }
+
+    .footer-icons a {
+      color: white;
+    }
+
+    .footer-icons a:hover {
+      color: #adb5bd;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Barra de navegación fija -->
+  <nav class="border border-2 rounded-top-2 navbar navbar-expand-lg navbar-light navbar-custom">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="Index.html">
+        <img src="img/logo/rino.png" alt="Logo" width="70" height="40" />
+      </a>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link fw-bolder" href="#">ADMINISTRADOR DE RESIDENCIAS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-bolder" href="#">PROFESORES</a>
+        </li>
+      </ul>
+
+      <form class="d-flex">
+        <div class="input-group">
+          <span class="input-group-text"><i class="bi bi-search"></i></span>
+          <input class="form-control search-bar me-2" type="search" placeholder="Buscar" aria-label="Buscar" />
+        </div>
+        <button class="btn btn-search" type="submit">Buscar</button>
+      </form>
+
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
+        <li class="nav-item">
+          <a class="nav-link" style="color: black; font-size: 18px" href="#"><i class="bi bi-bell-fill"></i></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link profile-name" href="#"><i class="bi bi-person-circle me-1" style="font-size: 25px"></i>
+            Olivares López Oscar</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Modal -->
+  <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="logoutModalLabel">
+            Confirmar Cierre de Sesión
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ¿Estás seguro de que deseas cerrar sesión?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            Cancelar
+          </button>
+          <button type="button" class="btn btn-danger" onclick="cerrarSesion()">
+            Cerrar sesión
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contenedor principal con el menú lateral y el contenido -->
+  <div class="d-flex">
+    <!-- Sidebar estilo Teams -->
+    <div class="sidebar d-flex flex-column align-items-center pt-0">
+      <a href="#" class="text-center active">
+        <i class="bi bi-house-door-fill"></i>
+        <span>Inicio</span>
+      </a>
+      <a href="#" class="text-center">
+        <i class="bi bi-person-fill"></i>
+        <span>Alumno</span>
+      </a>
+      <a href="#" class="text-center">
+        <i class="bi bi-mortarboard-fill"></i>
+        <span>Mi Residencias</span>
+      </a>
+      <a href="#" class="text-center" data-bs-toggle="modal" data-bs-target="#logoutModal">
+        <i class="bi bi-box-arrow-right"></i>
+        <span>Salir</span>
+      </a>
+    </div>
+
+    <!-- Contenido principal -->
+    <div class="content pt-0 mt-0">
+      <h1>Proyección General de residencias</h1>
+      <p>Visualización de Residentes por carreras.</p>
+
+      <div class="col-12">
+        <div class="card rounded-3">
+          <div class="text-center my-2 mb-0 flex-grow-1 fs-6 fs-md-4">
+            <h3>ALUMNOS ASIGNADOS</h3>
+            <div class="row my-3">
+              <div class="col-2">Carrera</div>
+              <div class="col-8">
+                <select class="form-select me-2" aria-label="Filtro">
+                  <option value="">Selecciona una carrera</option>
+                  <option value="1">
+                    Ingeniería en Sistemas Computacionales
+                  </option>
+                  <option value="2">
+                    Ingeniería en Tecnologías de la Información y
+                    Comunicaciones
+                  </option>
+                  <option value="3">Contador Público</option>
+                  <option value="4">Ingeniería en Logística</option>
+                  <option value="5">Ingeniería Mecatrónica</option>
+                  <option value="6">Ingeniería en Gestión Empresarial</option>
+                  <option value="7">Licenciatura en Administración</option>
+                  <option value="8">Ingeniería Química</option>
+                  <option value="9">Ingeniería Industrial</option>
+                </select>
+              </div>
+              <div class="col-2">
+                <input type="button" class="btn btn-primary" value="Buscar" />
+              </div>
+            </div>
+            <table class="table table-striped table-hover table-bordered mt-3">
+              <thead>
+                <tr>
+                  <th>No. Control</th>
+                  <th>Nombre</th>
+                  <th>Especialidad</th>
+                  <th>Horario</th>
+                  <th>Asesor</th>
+                  <th>Correo</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>2182419003</td>
+                  <td>Carlos Sánchez</td>
+                  <td>Redes</td>
+                  <td>Vie 7:00-12:00</td>
+                  <td>Ing. García</td>
+                  <td>carlos.sanchez@unitec.mx</td>
+                </tr>
+                <tr>
+                  <td>2182419004</td>
+                  <td>Juan Pérez</td>
+                  <td>Desarrollo de software</td>
+                  <td>Lun-Jue 7:00-10:00</td>
+                  <td>Ing. López</td>
+                  <td>juan.perez@unitec.mx</td>
+                </tr>
+                <tr>
+                  <td>2182419003</td>
+                  <td>Carlos Sánchez</td>
+                  <td>Redes</td>
+                  <td>Vie 7:00-12:00</td>
+                  <td>Ing. García</td>
+                  <td>carlos.sanchez@unitec.mx</td>
+                </tr>
+                <tr>
+                  <td>2182419004</td>
+                  <td>Juan Pérez</td>
+                  <td>Desarrollo de software</td>
+                  <td>Lun-Jue 7:00-10:00</td>
+                  <td>Ing. López</td>
+                  <td>juan.perez@unitec.mx</td>
+                </tr>
+                <tr>
+                  <td>2182419003</td>
+                  <td>Carlos Sánchez</td>
+                  <td>Redes</td>
+                  <td>Vie 7:00-12:00</td>
+                  <td>Ing. García</td>
+                  <td>carlos.sanchez@unitec.mx</td>
+                </tr>
+                <tr>
+                  <td>2182419004</td>
+                  <td>Juan Pérez</td>
+                  <td>Desarrollo de software</td>
+                  <td>Lun-Jue 7:00-10:00</td>
+                  <td>Ing. López</td>
+                  <td>juan.perez@unitec.mx</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card rounded-3 mt-3">
+          <div class="text-center my-2 mb-0 flex-grow-1 fs-6 fs-md-4">
+            <h3>Mi residencias</h3>
+            <div class="row my-3">
+              <div class="col-2">Buscar alumno</div>
+              <div class="col-8">
+                <input type="text" class="form-control" />
+              </div>
+              <div class="col-2">
+                <input type="button" class="btn btn-primary" value="Buscar" />
+              </div>
+
+              <div class="row my-3">
+                <!--Proyecto-->
+                <div class="col-3">
+                  <!-- Boton -->
+                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Proye">
+                    Proyecto
+                  </button>
+
+                  <!-- Modal -->
+                  <div class="modal fade" id="Proye" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h1 class="modal-title fs-5" id="exampleModalLabel">
+                            Proyecto de Alumno
+                          </h1>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <p>Proyecto en curso: ...</p>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            Close
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!--Observaciónes-->
+                <div class="col-3">
+                  <!-- Boton -->
+                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Obs">
+                    Observaciónes
+                  </button>
+
+                  <!-- Modal -->
+                  <div class="modal fade" id="Obs" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h1 class="modal-title fs-5" id="exampleModalLabel">
+                            Observaciónes de Alumno
+                          </h1>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          Rodríguez Antonio vive a 1 hora de distancia de
+                          donde está haciendo las recidencias. Se toma en
+                          cuenta para la evaluación de desempeño pero no se
+                          dará un trato preferencial.
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            Close
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!--Horario-->
+                <div class="col-3">
+                  <!-- Boton -->
+                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Hora">
+                    Horiario
+                  </button>
+
+                  <!-- Modal -->
+                  <div class="modal fade" id="Hora" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h1 class="modal-title fs-5" id="exampleModalLabel">
+                            Horario de Alumno
+                          </h1>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <p>Lunes a Jueves: 8:00 a 12:00</p>
+                          <p>Viernes: 8:00 a 10:00</p>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            Close
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!--Contacto-->
+                <div class="col-3">
+                  <!-- Boton -->
+                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Cont">
+                    Contacto
+                  </button>
+
+                  <!-- Modal -->
+                  <div class="modal fade" id="Cont" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h1 class="modal-title fs-5" id="exampleModalLabel">
+                            Proyecto de Alumno
+                          </h1>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <p>Correo electrónico: antoronio863@gmail.com</p>
+                          <p></p>
+                          <p>Teléfono: 55 1747 3176</p>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            Close
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <table class="table table-striped table-hover table-bordered mt-3">
+              <thead>
+                <tr>
+                  <th>No. Control</th>
+                  <th>Nombre</th>
+                  <th>Especialidad</th>
+                  <th>Horario</th>
+                  <th>Asesor</th>
+                  <th>Correo</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>2182419003</td>
+                  <td>Carlos Sánchez</td>
+                  <td>Redes</td>
+                  <td>Vie 7:00-12:00</td>
+                  <td>Ing. García</td>
+                  <td>carlos.sanchez@unitec.mx</td>
+                </tr>
+                <tr>
+                  <td>2182419004</td>
+                  <td>Juan Pérez</td>
+                  <td>Desarrollo de software</td>
+                  <td>Lun-Jue 7:00-10:00</td>
+                  <td>Ing. López</td>
+                  <td>juan.perez@unitec.mx</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="text-center py-0 m-0">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 pt-4">
+          <p style="font-size: 12px">
+            © 2024 Tecnológico de Estudios Superiores de Cuautitlán Izcalli.
+            Todos los derechos reservados.
+          </p>
+        </div>
+        <div class="col-md-4" style="font-size: 14px">
+          <h6>Contacto</h6>
+          <p>
+            Av. Nopaltepec s/n Col. La Perla C.P. 54740, Cuautitlán Izcalli,
+            Estado de México
+          </p>
+          <p>Tel: (55) 58 64 31 70 - 71</p>
+        </div>
+        <div class="col-md-4 footer-icons pt-4 fs-5">
+          <h6>Síguenos en:</h6>
+          <a href="https://web.whatsapp.com/" class="me-2"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://www.facebook.com/Comunidad.Tesci" class="me-2"><i class="fab fa-facebook"></i></a>
+          <a href="https://x.com/ComunidadTESCI?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" class="me-2"><i
+              class="fab fa-twitter"></i></a>
+          <a href="https://www.instagram.com/comunidad.tesci/p/Cn4jF-CObxF/" class="me-2"><i
+              class="fab fa-instagram"></i></a>
+          <a href="https://tesci.edomex.gob.mx/"><i class="fas fa-globe"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts de Bootstrap -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
