@@ -1,0 +1,773 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inicio</title>
+
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0&family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,1,0" />
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+
+
+  <!-- iconos login lista bootstrap -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
+  <!-- Fin -->
+
+  <!-- iconos lista redes sociales bootstrap -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css" />
+
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Fin -->
+</head>
+
+<body>
+  <div class="container">
+    <nav class="rounded border border-1 navbar navbar-expand-lg navbar-light bg-light sticky-top w-100">
+      <div class="container d-flex justify-content-between align-items-center">
+        <!-- Logo con flex ajustado para móviles -->
+        <a class="navbar-brand d-flex align-items-center me-auto">
+          <img src="img/logo/rino.png" alt="Logo" width="80px" class="img-fluid rounded-3" />
+        </a>
+
+        <!-- Texto "MENÚ" centrado y visible solo en dispositivos móviles -->
+        <span class="d-lg-none text-center flex-grow-1 fw-bold mx-2 text-muted">MENÚ</span>
+
+        <!-- Botón de colapso (toggle) ajustado a la derecha en móviles -->
+        <button class="navbar-toggler shadow-none border-0 ms-auto" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Menú colapsable -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <!-- Título solo en pantallas grandes -->
+          <div class="d-none d-lg-block mx-3 text-center">
+            <h1 style="font-size: 15px;">ADMINISTRADOR DE RESIDENCIAS</h1>
+          </div>
+
+          <!-- Elementos de navegación -->
+          <ul class="navbar-nav mx-auto text-lg-center text-sm-start">
+            <li class="nav-item mx-1">
+              <a class="nav-link" href="Index.html">Inicio</a>
+            </li>
+            <li class="nav-item mx-1">
+              <a class="nav-link" href="Proyecciones.html">Selección de Proyectos</a>
+            </li>
+            <li class="nav-item mx-1">
+              <a class="nav-link" href="Contactos.html">Contacto</a>
+            </li>
+          </ul>
+
+          <!-- Botón "Acceder" solo para pantallas grandes -->
+          <div class="ms-lg-3 d-none d-lg-block">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">
+              Acceder
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Modal de Login -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header" style="background-color: #8a2036; color: white;">
+            <h5 class="modal-title text-center w-100" id="loginModalLabel">
+              Iniciar Sesión
+            </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+          </div>
+          <div class="modal-body">
+            <!-- Formulario de inicio de sesión -->
+            <!-- Selección de tipo de usuario -->
+            <form action="login.php" method="POST">
+              <div class="mb-3">
+                <label for="userType" class="form-label">Tipo de Usuario</label>
+                <select class="form-select" id="userType" name="tipo_usuario" aria-label="Selecciona tu tipo de usuario"
+                  required>
+                  <option value="" disabled selected>
+                    Selecciona una opción
+                  </option>
+                  <option value="alumno">Alumno</option>
+                  <option value="docente">Docente</option>
+                  <option value="superusuario">Administrador</option>
+                </select>
+              </div>
+
+              <div class="input-group mb-3">
+                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                <input type="text" class="form-control" id="username" name="username" placeholder="Correo institucional"
+                  aria-label="Usuario" required />
+              </div>
+
+              <div class="input-group mb-3">
+                <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Contraseña"
+                  aria-label="Contraseña" required />
+              </div>
+
+              <div class="mb-3 text-center">
+                <button type="submit" class="btn btn-primary w-100">
+                  Iniciar Sesión
+                </button>
+              </div>
+              <!-- Botón para abrir el modal de registro -->
+              <div class="mb-3 text-center">
+                <button type="button" class="btn btn-secondary w-100" data-bs-toggle="modal"
+                  data-bs-target="#registerModal" data-bs-dismiss="modal">
+                  ¡Regístrate aquí!
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal de Registro -->
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title text-center w-100" id="registerModalLabel">
+              Registro de alumnos residencias profesionales
+            </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+          </div>
+          <div class="modal-body" style="max-height: 80vh; overflow-y: auto">
+            <!-- Formulario de Inserción de Alumno -->
+            <form action="process_form.php" method="POST">
+              <div class="row">
+                <!-- Correo Institucional con Icono -->
+                <div class="col-12 col-md-6 mb-3">
+                  <label for="institutionalEmail" class="form-label">Correo Institucional</label>
+                  <div class="input-group">
+                    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                    <input type="email" class="form-control" id="institutionalEmail" name="institutionalEmail"
+                      placeholder="Ingrese el correo institucional" required />
+                  </div>
+                </div>
+
+                <!-- Crear Contraseña con Icono -->
+                <div class="col-12 col-md-6 mb-3">
+                  <label for="createPassword" class="form-label">Crear Contraseña</label>
+                  <div class="input-group">
+                    <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                    <input type="password" class="form-control" id="createPassword" name="createPassword"
+                      placeholder="Ingrese una contraseña" required />
+                  </div>
+                </div>
+
+                <!-- Nombre Empresa -->
+                <div class="col-12 col-md-6 mb-3">
+                  <label for="nombreEmpresa" class="form-label">Nombre Empresa</label>
+                  <input type="text" class="form-control" id="nombreEmpresa" name="nombreEmpresa"
+                    placeholder="Ingrese el nombre de la empresa" required />
+                </div>
+
+                <!-- Proyecto asignado -->
+                <div class="col-12 col-md-6 mb-3">
+                  <label for="proyectoAsignado" class="form-label">Proyecto asignado</label>
+                  <input type="text" class="form-control" id="proyectoAsignado" name="proyectoAsignado"
+                    placeholder="Ingrese el proyecto asignado" required />
+                </div>
+
+                <!-- Matrícula -->
+                <div class="col-12 col-md-6 mb-3">
+                  <label for="matricula" class="form-label">Matrícula</label>
+                  <input type="text" class="form-control" id="matricula" name="matricula"
+                    placeholder="Ingrese la matrícula" required />
+                </div>
+
+                <!-- Nombre -->
+                <div class="col-12 col-md-6 mb-3">
+                  <label for="nombre" class="form-label">Nombre</label>
+                  <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese el nombre"
+                    required />
+                </div>
+
+                <!-- Apellido Paterno -->
+                <div class="col-12 col-md-6 mb-3">
+                  <label for="apellidoPaterno" class="form-label">Apellido Paterno</label>
+                  <input type="text" class="form-control" id="apellidoPaterno" name="apellidoPaterno"
+                    placeholder="Ingrese el apellido paterno" required />
+                </div>
+
+                <!-- Apellido Materno -->
+                <div class="col-12 col-md-6 mb-3">
+                  <label for="apellidoMaterno" class="form-label">Apellido Materno</label>
+                  <input type="text" class="form-control" id="apellidoMaterno" name="apellidoMaterno"
+                    placeholder="Ingrese el apellido materno" required />
+                </div>
+
+                <!-- Carrera -->
+                <div class="col-12 col-md-6 mb-3">
+                  <label for="carrera" class="form-label">Carrera</label>
+                  <select class="form-select" id="carrera" name="carrera" required>
+                    <option value="">Selecciona una carrera</option>
+                    <option value="1">
+                      Ingeniería en Sistemas Computacionales
+                    </option>
+                    <option value="2">
+                      Ingeniería en Tecnologías de la Información y
+                      Comunicaciones
+                    </option>
+                    <option value="3">Contador Público</option>
+                    <option value="4">Ingeniería en Logística</option>
+                    <option value="5">Ingeniería Mecatrónica</option>
+                    <option value="6">
+                      Ingeniería en Gestión Empresarial
+                    </option>
+                    <option value="7">Licenciatura en Administración</option>
+                    <option value="8">Ingeniería Química</option>
+                    <option value="9">Ingeniería Industrial</option>
+                  </select>
+                </div>
+
+                <!-- Teléfono -->
+                <div class="col-12 col-md-6 mb-3">
+                  <label for="telefono" class="form-label">Teléfono</label>
+                  <input type="text" class="form-control" id="telefono" name="telefono"
+                    placeholder="Ingrese el número de teléfono" required />
+                </div>
+
+                <!-- Observaciones -->
+                <div class="col-12 mb-3">
+                  <label for="observaciones" class="form-label">Observaciones</label>
+                  <textarea class="form-control" id="observaciones" name="observaciones" rows="3"
+                    placeholder="Ingrese observaciones adicionales" required></textarea>
+                </div>
+
+                <!-- Botón Enviar -->
+                <div class="col-12 text-center">
+                  <button style="width: 200px" type="submit" class="btn btn-primary">
+                    Enviar
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-4">
+      <div class="col-12 col-md-12 col-lg-12 text-center">
+        <h2 style="color: #bf955a">RESIDENCIAS PROFESIONALES</h2>
+      </div>
+    </div>
+    <!-- carrusel de imágenes -->
+
+    <div id="carouselExample" class="carousel slide m-3" data-bs-ride="carousel" data-bs-interval="40000">
+      <!-- Carrusel automático -->
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="img/Fotos/fotos-largas/fot1.png" class="d-block w-100 rounded" alt="Imagen 1" />
+        </div>
+        <div class="carousel-item">
+          <img src="img/Fotos/fotos-largas/fot2.png" class="d-block w-100 rounded" alt="Imagen 2" />
+        </div>
+        <div class="carousel-item">
+          <img src="img/Fotos/fotos-largas/pixelcut-3.png" class="d-block w-100 rounded" alt="Imagen 3" />
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Anterior</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Siguiente</span>
+      </button>
+    </div>
+
+    <!-- finde de el carousel -->
+
+    <style>
+      .custom-shadow {
+        box-shadow: 0 4px 4px -2px #acacac;
+        /* Sombra solo en la parte inferior */
+      }
+    </style>
+
+    <div class="row my-3">
+      <!-- Primera tarjeta -->
+      <div class="col-12 col-md-6">
+        <!-- Ocupa todo el ancho en móviles, la mitad en pantallas medianas y grandes -->
+        <div class="card custom-shadow rounded-3">
+          <!-- Clase para redondear la tarjeta -->
+          <div class="rounded-top text-center my-0 mb-0 flex-grow-1 fs-6 fs-md-4 bg-warning text-white">
+            <h3>Residencias</h3>
+          </div>
+          <div class="card-body d-flex flex-column flex-md-row align-items-center">
+            <!-- Texto de la tarjeta -->
+
+            <p class="mb-0 flex-grow-1 fs-6 fs-md-4">
+              Es la actividad realizada durante el desarrollo de un proyecto,
+              en cualquiera de las áreas de desarrollo establecidas, que
+              defina una problemática y proponga una solución viable.
+            </p>
+            <!-- Imagen de la tarjeta -->
+            <img src="img/Fotos/resi1.png" alt="Imagen" class="img-fluid ms-md-3 mt-3 mt-md-0 rounded"
+              style="max-width: 150px" />
+            <!-- Clase para redondear la imagen -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Segunda tarjeta -->
+      <div class="col-12 col-md-6 my-3 my-md-0">
+        <!-- Ocupa todo el ancho en móviles, la mitad en pantallas medianas y grandes -->
+        <div class="card custom-shadow rounded-3">
+          <!-- Clase para redondear la tarjeta -->
+          <div class="rounded-top text-center my-0 mb-0 flex-grow-1 fs-6 fs-md-4 bg-success w-100 text-white mx-auto">
+            <h3>Además</h3>
+          </div>
+          <div class="card-body d-flex flex-column flex-md-row align-items-center">
+            <!-- Texto de la tarjeta -->
+            <p class="mb-0 flex-grow-1 fs-6 fs-md-4">
+              A través de la participación directa del estudiante en
+              desempeños propios de su futura profesión.
+            </p>
+            <!-- Imagen de la tarjeta -->
+            <img src="img/Fotos/resi2.png" alt="Imagen" class="img-fluid ms-md-3 mt-3 mt-md-0 rounded"
+              style="max-width: 150px" />
+            <!-- Clase para redondear la imagen -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- contenedor 3  -->
+    <div class="card custom-shadow rounded-3 bg-transparent">
+      <div class="row my-3">
+        <!-- Primera tarjeta -->
+        <!-- Carrusel para móviles -->
+        <div class="container-fluid">
+          <div id="imageCarousel" class="carousel slide d-md-none m-3" data-bs-ride="carousel"
+            style="max-width: 100%; overflow: hidden">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="img/Fotos/resi5.png" class="d-block w-100 img-fluid" alt="Imagen 1" />
+              </div>
+              <div class="carousel-item">
+                <img src="img/Fotos/resi4.png" class="d-block w-100 img-fluid rounded" alt="Imagen 2" />
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#imageCarousel" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#imageCarousel" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Imágenes alineadas horizontalmente para pantallas grandes -->
+        <div class="col-12 col-md-5 d-none d-md-block">
+          <div class="card-body d-flex flex-column flex-md-row align-items-center">
+            <!-- Imagen de la tarjeta -->
+            <img src="img/Fotos/resi3.png" alt="Imagen 1" class="img-fluid ms-md-3 mt-3 mt-md-0 rounded"
+              style="max-width: 150px" />
+            <img src="img/Fotos/resi4.png" alt="Imagen 2" class="img-fluid ms-md-3 mt-3 mt-md-0 rounded"
+              style="max-width: 150px" />
+          </div>
+        </div>
+
+        <!-- Segunda tarjeta -->
+        <div class="col-12 col-md-6 ms-lg-5">
+          <!-- Ocupa todo el ancho en móviles, la mitad en pantallas medianas y grandes -->
+          <div class="card rounded-3 bg-primary text-white">
+            <!-- Clase para redondear la tarjeta -->
+            <div class="text-center my-2 mb-0 flex-grow-1 fs-6 fs-md-4 pt-3">
+              <h3>¿CUÁNTO TIEMPO DEBE DURAR UNA RESIDENCIA PROFESIONAL?</h3>
+            </div>
+            <div class="card-body d-flex flex-column flex-md-row align-items-center">
+              <p class="mb-0 flex-grow-1 fs-6 fs-md-4">
+                Un período de 4 meses como tiempo mínimo y 6 meses como tiempo
+                máximo, debiendo acumularse un mínimo de 500 horas.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Videos -->
+    <div class="container my-4 card rounded-3 pb-2 bg-dark">
+      <!-- Título del contenido -->
+      <h3 class="text-center mb-4 text-white pt-3">
+        Plática inductiva de Residencias Profesionales | TecNM
+      </h3>
+
+      <!-- Vista horizontal para pantallas medianas o más grandes (se oculta en pantallas pequeñas) -->
+      <div class="d-none d-md-flex justify-content-center gap-3">
+        <div class="card border-0 rounded-3" style="width: 360px">
+          <iframe class="card-img-top rounded-3" height="280"
+            src="https://www.youtube.com/embed/VmH3Ez91jNc?si=T02GuTZ2QKY_8DCl" title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+        <div class="card border-0 rounded-3" style="width: 360px">
+          <iframe class="card-img-top rounded-3" height="280"
+            src="https://www.youtube.com/embed/oXVBP_hN7MQ?si=N8B0Tb9HhzEn66wb" title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+        <div class="card border-0 rounded-3" style="width: 360px">
+          <iframe class="card-img-top rounded-3" height="280"
+            src="https://www.youtube.com/embed/hujOe6Vjbkk?si=GRoYzBhybRR8RoN0" title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <!-- Carrusel para pantallas pequeñas (se oculta en pantallas medianas y grandes) -->
+      <div id="videoCarousel" class="carousel slide d-md-none">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="card border-0 rounded-3">
+              <iframe class="card-img-top rounded-3" width="100%" height="280"
+                src="https://www.youtube.com/embed/VmH3Ez91jNc?si=T02GuTZ2QKY_8DCl" title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="card border-0 rounded-3">
+              <iframe class="card-img-top rounded-3" width="100%" height="280"
+                src="https://www.youtube.com/embed/oXVBP_hN7MQ?si=N8B0Tb9HhzEn66wb" title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="card border-0 rounded-3">
+              <iframe class="card-img-top rounded-3" width="100%" height="280"
+                src="https://www.youtube.com/embed/hujOe6Vjbkk?si=GRoYzBhybRR8RoN0" title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
+        <!-- Controles del carrusel -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#videoCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#videoCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Cierre del div de la fila -->
+
+    <!-- contenedor 5 -->
+    <div class="row my-3">
+      <!-- Primera tarjeta -->
+      <div class="col-12 col-md-6">
+        <!-- Ocupa todo el ancho en móviles, la mitad en pantallas medianas y grandes -->
+        <div class="card custom-shadow rounded-3 bg-secondary:">
+          <!-- Clase para redondear la tarjeta -->
+          <div class="text-center my-2 mb-0 flex-grow-1 fs-6 fs-md-4 pt-3 bg-secondary text-white">
+            <h3>¿QUÉ REQUISITOS DEBO CUBRIR PARA DARME DE ALTA?</h3>
+          </div>
+          <div class="card-body d-flex flex-column flex-md-row align-items-center">
+            <!-- Lista de requisitos con iconos de Bootstrap como viñetas -->
+            <ul class="list-unstyled">
+              <li class="d-flex align-items-center">
+                <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                Acreditación del Servicio Social.
+              </li>
+              <li class="d-flex align-items-center">
+                <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                Acreditación de actividades complementarias.
+              </li>
+              <li class="d-flex align-items-center">
+                <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                Tener aprobado al menos el 80% de créditos de su plan de
+                estudios.
+              </li>
+              <li class="d-flex align-items-center">
+                <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                No contar con ninguna asignatura en condiciones de "curso
+                especial".
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Segunda tarjeta -->
+      <div class="col-12 col-md-6 pt-4">
+        <!-- Ocupa todo el ancho en móviles, la mitad en pantallas medianas y grandes -->
+        <div class="card custom-shadow rounded-3 bg-success text-white">
+          <!-- Clase para redondear la tarjeta -->
+          <div class="text-center my-2 mb-0 flex-grow-1 fs-6 fs-md-4 pt-3">
+            <h3>¿CÓMO ME REGISTRO?</h3>
+          </div>
+          <div class="card-body d-flex flex-column flex-md-row align-items-center">
+            <p class="mb-0 flex-grow-1 fs-6 fs-md-4">
+              Dirigirse al Coordinador de Carrera El proyecto de Residencia
+              Profesional puede realizarse de manera individual, grupal o
+              interdisciplinaria; dependiendo de los requerimientos,
+              condiciones y características del proyecto de la empresa,
+              organismo o dependencia.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Fin contenedor 5 -->
+
+    <!-- Carrusel para móviles 2-->
+
+    <div id="imageCarousel" class="carousel slide d-md-none m-3" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="img/Fotos/resi9.png" class="d-block w-100 rounded-3" style="max-height: 300px; object-fit: cover"
+            alt="Imagen 1" />
+        </div>
+        <div class="carousel-item">
+          <img src="img/Fotos/resi8.png" class="d-block w-100 rounded-3" style="max-height: 300px; object-fit: cover"
+            alt="Imagen 2" />
+        </div>
+        <div class="carousel-item">
+          <img src="img/Fotos/resi7.png" class="d-block w-100 rounded-3" style="max-height: 300px; object-fit: cover"
+            alt="Imagen 3" />
+        </div>
+        <div class="carousel-item">
+          <img src="img/Fotos/resi6.png" class="d-block w-100 rounded-3" style="max-height: 300px; object-fit: cover"
+            alt="Imagen 4" />
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#imageCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#imageCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+
+    <!-- Imágenes alineadas horizontalmente para pantallas grandes -->
+    <div class="card custom-shadow rounded-3 bg-transparent rounded-container d-none d-md-block">
+      <div class="row justify-content-center my-3">
+        <!-- Primera imagen -->
+        <div class="col-md-3 col-6 mb-3">
+          <img src="img/Fotos/resi9.png" class="img-fluid rounded-3 mx-auto d-block" alt="Imagen 1" />
+        </div>
+        <!-- Segunda imagen -->
+        <div class="col-md-3 col-6 mb-3">
+          <img src="img/Fotos/resi8.png" class="img-fluid rounded-3 mx-auto d-block" alt="Imagen 2" />
+        </div>
+        <!-- Tercera imagen -->
+        <div class="col-md-3 col-6 mb-3">
+          <img src="img/Fotos/resi7.png" class="img-fluid rounded-3 mx-auto d-block" alt="Imagen 3" />
+        </div>
+        <!-- Cuarta imagen -->
+        <div class="col-md-3 col-6 mb-3">
+          <img src="img/Fotos/resi6.png" class="img-fluid rounded-3 mx-auto d-block" alt="Imagen 4" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Fin Carrusel para móviles 2-->
+
+    <div class="container my-4">
+      <div class="row my-3">
+        <!-- Primera tarjeta -->
+        <div class="col-12 col-md-6 mb-3">
+          <!-- Ocupa todo el ancho en móviles, la mitad en pantallas medianas y grandes -->
+          <div class="card custom-shadow rounded-3 bg-dark text-white">
+            <!-- Clase para redondear la tarjeta -->
+            <div class="text-center my-2 mb-0 flex-grow-1 fs-6 fs-md-4 pt-3">
+              <h3>VALOR CURRICULAR Y UBICACIÓN</h3>
+            </div>
+            <div class="card-body d-flex flex-column flex-md-row text-center">
+              <!-- Contenido -->
+              <p>
+                El valor curricular de la residencia es de 10 créditos y se
+                encuentra ubicada en el Noveno Semestre de la Carrera.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Segunda tarjeta -->
+        <div class="col-12 col-md-6 mb-3"> 
+          <a href="https://www.tecnm.mx/?vista=Sistema_Gestion_Calidad">
+            <!-- Ocupa todo el ancho en móviles, la mitad en pantallas medianas y grandes -->
+            <div class="card rounded-3 custom-shadow">
+              <!-- Clase para redondear la tarjeta -->
+              <div class="text-center my-2 mb-0 flex-grow-1 fs-6 fs-md-4 pt-3">
+                <h3>
+                  Formatos del Sistema de Gestión de Calidad disponibles en:
+                </h3>
+              </div>
+              <div class="card-body d-flex flex-column flex-md-row align-items-center">
+                <p class="mb-0 flex-grow-1 fs-6 fs-md-4 text-lg-center text-primary">
+                  <a href="https://www.tecnm.mx/?vista=Sistema_Gestion_Calidad" class="text-primary"></a>
+                </p>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!--Fin contenedor 5 -->
+
+    <!-- tarjeta gogle maps  -->
+    <div class="container my-4">
+      <div class="row">
+        <div class="col-12">
+          <div class="card custom-shadow rounded-3">
+            <div class="card-body">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1878.772858169412!2d-99.23009268634488!3d19.64671350981595!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d21e5c07387a6f%3A0xd7735472495ee4aa!2sTecNM%20-%20Tecnol%C3%B3gico%20de%20Estudios%20Superiores%20de%20Cuautitl%C3%A1n%20Izcalli!5e0!3m2!1ses-419!2smx!4v1730332626944!5m2!1ses-419!2smx"
+                width="100%" height="350" style="border: 0" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fin tarjeta gogle maps  -->
+  </div>
+
+  <!-- Footer -->
+
+  <footer class="text-white text-center text-lg-start" style="background-color: #8a2036">
+    <div class="container pt-3">
+      <div class="row">
+        <!-- Copyright Information -->
+        <div class="col-lg-5 col-md-12 mb-4 mb-md-0 d-flex flex-column justify-content-center align-items-center">
+          <p class="mb-0">
+            © 2024 Tecnológico de Estudios Superiores de Cuautitlán Izcalli.
+            Todos los derechos reservados.
+          </p>
+        </div>
+
+        <!-- Contact Information -->
+        <div
+          class="col-lg-3 col-md-6 mb-4 mb-md-0 text-center d-flex flex-column justify-content-center align-items-center">
+          <h5 class="text-uppercase fs-6">Contacto</h5>
+          <p class="fs-6">
+            Av. Nopaltepec s/n Col. La Perla C.P. 54740, Cuautitlán Izcalli,
+            Estado de México<br />
+            Tel: (55) 58 64 31 70-71
+          </p>
+        </div>
+
+        <!-- Social Media Icons -->
+        <div
+          class="col-lg-4 col-md-6 mb-4 mb-md-0 text-center d-flex flex-column align-items-center justify-content-center">
+          <h5 class="text-uppercase fs-6">Síguenos en:</h5>
+          <div class="d-flex justify-content-center">
+            <a href="https://web.whatsapp.com/" class="text-white me-3 fs-5">
+              <i class="bi bi-whatsapp"></i>
+            </a>
+            <a href="https://www.facebook.com/Comunidad.Tesci" class="text-white me-3 fs-5">
+              <i class="bi bi-facebook"></i>
+            </a>
+            <a href="https://x.com/ComunidadTESCI?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"
+              class="text-white me-3 fs-5">
+              <i class="bi bi-twitter"></i>
+            </a>
+            <a href="https://www.instagram.com/comunidad.tesci/p/Cn4jF-CObxF/" class="text-white me-3 fs-5">
+              <i class="bi bi-instagram"></i>
+            </a>
+            <a href="https://tesci.edomex.gob.mx/" class="text-white fs-5">
+              <i class="bi bi-globe"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- Fin Footer -->
+
+  <button id="chat-tog">
+    <span class="material-symbols-rounded">mode_comment</span>
+    <span class="material-symbols-rounded">close</span>
+  </button>
+
+  <div class="chat-pop">
+    <!--Encabezado-->
+    <div class="chat-head">
+      <div class="head-i">
+        <svg class="chat-logo" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 1024 1024">
+          <path
+            d="M738.3 287.6H285.7c-59 0-106.8 47.8-106.8 106.8v303.1c0 59 47.8 106.8 106.8 106.8h81.5v111.1c0 .7.8 1.1 1.4.7l166.9-110.6 41.8-.8h117.4l43.6-.4c59 0 106.8-47.8 106.8-106.8V394.5c0-59-47.8-106.9-106.8-106.9zM351.7 448.2c0-29.5 23.9-53.5 53.5-53.5s53.5 23.9 53.5 53.5-23.9 53.5-53.5 53.5-53.5-23.9-53.5-53.5zm157.9 267.1c-67.8 0-123.8-47.5-132.3-109h264.6c-8.6 61.5-64.5 109-132.3 109zm110-213.7c-29.5 0-53.5-23.9-53.5-53.5s23.9-53.5 53.5-53.5 53.5 23.9 53.5 53.5-23.9 53.5-53.5 53.5zM867.2 644.5V453.1h26.5c19.4 0 35.1 15.7 35.1 35.1v121.1c0 19.4-15.7 35.1-35.1 35.1h-26.5zM95.2 609.4V488.2c0-19.4 15.7-35.1 35.1-35.1h26.5v191.3h-26.5c-19.4 0-35.1-15.7-35.1-35.1zM561.5 149.6c0 23.4-15.6 43.3-36.9 49.7v44.9h-30v-44.9c-21.4-6.5-36.9-26.3-36.9-49.7 0-28.6 23.3-51.9 51.9-51.9s51.9 23.3 51.9 51.9z">
+          </path>
+        </svg>
+        <h2 class="logo-txt">ChatBot</h2>
+      </div>
+      <!-- Cerrar el botón correctamente -->
+      <button id="close-chat" class="material-symbols-rounded">
+        keyboard_arrow_down
+      </button>
+    </div>
+
+    <!--Cuerpo-->
+    <div class="chat-body">
+      <div class="msg bot-msg">
+        <svg class="bot-avt" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 1024 1024">
+          <path
+            d="M738.3 287.6H285.7c-59 0-106.8 47.8-106.8 106.8v303.1c0 59 47.8 106.8 106.8 106.8h81.5v111.1c0 .7.8 1.1 1.4.7l166.9-110.6 41.8-.8h117.4l43.6-.4c59 0 106.8-47.8 106.8-106.8V394.5c0-59-47.8-106.9-106.8-106.9zM351.7 448.2c0-29.5 23.9-53.5 53.5-53.5s53.5 23.9 53.5 53.5-23.9 53.5-53.5 53.5-53.5-23.9-53.5-53.5zm157.9 267.1c-67.8 0-123.8-47.5-132.3-109h264.6c-8.6 61.5-64.5 109-132.3 109zm110-213.7c-29.5 0-53.5-23.9-53.5-53.5s23.9-53.5 53.5-53.5 53.5 23.9 53.5 53.5-23.9 53.5-53.5 53.5zM867.2 644.5V453.1h26.5c19.4 0 35.1 15.7 35.1 35.1v121.1c0 19.4-15.7 35.1-35.1 35.1h-26.5zM95.2 609.4V488.2c0-19.4 15.7-35.1 35.1-35.1h26.5v191.3h-26.5c-19.4 0-35.1-15.7-35.1-35.1zM561.5 149.6c0 23.4-15.6 43.3-36.9 49.7v44.9h-30v-44.9c-21.4-6.5-36.9-26.3-36.9-49.7 0-28.6 23.3-51.9 51.9-51.9s51.9 23.3 51.9 51.9z">
+          </path>
+        </svg>
+        <div class="msg-txt">¡Buenos dias! <br />¿En qué puedo ayudarte?</div>
+      </div>
+    </div>
+
+    <!--Pie-->
+    <div class="chat-foot">
+      <form action="#" class="chat-form">
+        <textarea placeholder="Escriba sus dudas" class="msg-input" required></textarea>
+        <div class="chat-controls">
+          <!--<button type="button" class="material-symbols-rounded">sentiment_satisfied</button>-->
+          <!--<button type="button" class="material-symbols-rounded">attach_file</button>-->
+          <button type="submit" id="send-msg" class="material-symbols-rounded">
+            arrow_upward
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script src="conect.js"></script>
+
+  <!-- JavaScript de Bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <!-- fin link iconos lista bootstrap -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
