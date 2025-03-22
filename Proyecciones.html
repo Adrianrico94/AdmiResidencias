@@ -1,0 +1,398 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contacto</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+  <link rel="stylesheet" href="Fuesteletra.css">
+
+
+
+
+  <!-- iconos login lista bootstrap -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
+  <!-- Fin -->
+
+  <!-- iconos lista redes sociales bootstrap -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css" />
+
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Fin -->
+</head>
+
+<body>
+  <div class="container">
+    <nav class="rounded border border-1 navbar navbar-expand-lg navbar-light bg-light sticky-top w-100">
+      <div class="container d-flex justify-content-between align-items-center">
+        <!-- Logo con flex ajustado para móviles -->
+        <a class="navbar-brand d-flex align-items-center me-auto">
+          <img src="img/logo/rino.png" alt="Logo" width="80px" class="img-fluid rounded-3" />
+        </a>
+
+        <!-- Texto "MENÚ" centrado y visible solo en dispositivos móviles -->
+        <span class="d-lg-none text-center flex-grow-1 fw-bold mx-2 text-muted">MENÚ</span>
+
+        <!-- Botón de colapso (toggle) ajustado a la derecha en móviles -->
+        <button class="navbar-toggler shadow-none border-0 ms-auto" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Menú colapsable -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <!-- Título solo en pantallas grandes -->
+          <div class="d-none d-lg-block mx-3 text-center">
+            <h1 style="font-size: 15px;">ADMINISTRADOR DE RESIDENCIAS</h1>
+          </div>
+
+          <!-- Elementos de navegación -->
+          <ul class="navbar-nav mx-auto text-lg-center text-sm-start">
+            <li class="nav-item mx-1">
+              <a class="nav-link" href="Index.html">Inicio</a>
+            </li>
+            <li class="nav-item mx-1">
+              <a class="nav-link" href="Proyecciones.html">Selección de Proyectos</a>
+            </li>
+            <li class="nav-item mx-1">
+              <a class="nav-link" href="Contactos.html">Contacto</a>
+            </li>
+          </ul>
+
+          <!-- Botón "Acceder" solo para pantallas grandes -->
+          <div class="ms-lg-3 d-none d-lg-block">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">
+              Acceder
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Modal de Login -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header" style="background-color: #8a2036; color: white;">
+            <h5 class="modal-title text-center w-100" id="loginModalLabel">
+              Iniciar Sesión
+            </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+          </div>
+          <div class="modal-body">
+            <!-- Formulario de inicio de sesión -->
+            <!-- Selección de tipo de usuario -->
+            <form action="login.php" method="POST">
+              <div class="mb-3">
+                <label for="userType" class="form-label">Tipo de Usuario</label>
+                <select class="form-select" id="userType" name="tipo_usuario" aria-label="Selecciona tu tipo de usuario"
+                  required>
+                  <option value="" disabled selected>
+                    Selecciona una opción
+                  </option>
+                  <option value="alumno">Alumno</option>
+                  <option value="docente">Docente</option>
+                  <option value="superusuario">Administrador</option>
+                </select>
+              </div>
+
+              <div class="input-group mb-3">
+                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                <input type="text" class="form-control" id="username" name="username" placeholder="Correo institucional"
+                  aria-label="Usuario" required />
+              </div>
+
+              <div class="input-group mb-3">
+                <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Contraseña"
+                  aria-label="Contraseña" required />
+              </div>
+
+              <div class="mb-3 text-center">
+                <button type="submit" class="btn btn-primary w-100">
+                  Iniciar Sesión
+                </button>
+              </div>
+              <!-- Botón para abrir el modal de registro -->
+              <div class="mb-3 text-center">
+                <button type="button" class="btn btn-secondary w-100" data-bs-toggle="modal"
+                  data-bs-target="#registerModal" data-bs-dismiss="modal">
+                  ¡Regístrate aquí!
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal de Registro -->
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title text-center w-100" id="registerModalLabel">
+              Registro de alumnos residencias profesionales
+            </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+          </div>
+          <div class="modal-body" style="max-height: 80vh; overflow-y: auto">
+            <!-- Formulario de Inserción de Alumno -->
+            <form action="process_form.php" method="POST">
+              <div class="row">
+                <!-- Correo Institucional con Icono -->
+                <div class="col-12 col-md-6 mb-3">
+                  <label for="institutionalEmail" class="form-label">Correo Institucional</label>
+                  <div class="input-group">
+                    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                    <input type="email" class="form-control" id="institutionalEmail" name="institutionalEmail"
+                      placeholder="Ingrese el correo institucional" required />
+                  </div>
+                </div>
+
+                <!-- Crear Contraseña con Icono -->
+                <div class="col-12 col-md-6 mb-3">
+                  <label for="createPassword" class="form-label">Crear Contraseña</label>
+                  <div class="input-group">
+                    <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                    <input type="password" class="form-control" id="createPassword" name="createPassword"
+                      placeholder="Ingrese una contraseña" required />
+                  </div>
+                </div>
+
+                <!-- Nombre Empresa -->
+                <div class="col-12 col-md-6 mb-3">
+                  <label for="nombreEmpresa" class="form-label">Nombre Empresa</label>
+                  <input type="text" class="form-control" id="nombreEmpresa" name="nombreEmpresa"
+                    placeholder="Ingrese el nombre de la empresa" required />
+                </div>
+
+                <!-- Proyecto asignado -->
+                <div class="col-12 col-md-6 mb-3">
+                  <label for="proyectoAsignado" class="form-label">Proyecto asignado</label>
+                  <input type="text" class="form-control" id="proyectoAsignado" name="proyectoAsignado"
+                    placeholder="Ingrese el proyecto asignado" required />
+                </div>
+
+                <!-- Matrícula -->
+                <div class="col-12 col-md-6 mb-3">
+                  <label for="matricula" class="form-label">Matrícula</label>
+                  <input type="text" class="form-control" id="matricula" name="matricula"
+                    placeholder="Ingrese la matrícula" required />
+                </div>
+
+                <!-- Nombre -->
+                <div class="col-12 col-md-6 mb-3">
+                  <label for="nombre" class="form-label">Nombre</label>
+                  <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese el nombre"
+                    required />
+                </div>
+
+                <!-- Apellido Paterno -->
+                <div class="col-12 col-md-6 mb-3">
+                  <label for="apellidoPaterno" class="form-label">Apellido Paterno</label>
+                  <input type="text" class="form-control" id="apellidoPaterno" name="apellidoPaterno"
+                    placeholder="Ingrese el apellido paterno" required />
+                </div>
+
+                <!-- Apellido Materno -->
+                <div class="col-12 col-md-6 mb-3">
+                  <label for="apellidoMaterno" class="form-label">Apellido Materno</label>
+                  <input type="text" class="form-control" id="apellidoMaterno" name="apellidoMaterno"
+                    placeholder="Ingrese el apellido materno" required />
+                </div>
+
+                <!-- Carrera -->
+                <div class="col-12 col-md-6 mb-3">
+                  <label for="carrera" class="form-label">Carrera</label>
+                  <select class="form-select" id="carrera" name="carrera" required>
+                    <option value="">Selecciona una carrera</option>
+                    <option value="1">
+                      Ingeniería en Sistemas Computacionales
+                    </option>
+                    <option value="2">
+                      Ingeniería en Tecnologías de la Información y
+                      Comunicaciones
+                    </option>
+                    <option value="3">Contador Público</option>
+                    <option value="4">Ingeniería en Logística</option>
+                    <option value="5">Ingeniería Mecatrónica</option>
+                    <option value="6">
+                      Ingeniería en Gestión Empresarial
+                    </option>
+                    <option value="7">Licenciatura en Administración</option>
+                    <option value="8">Ingeniería Química</option>
+                    <option value="9">Ingeniería Industrial</option>
+                  </select>
+                </div>
+
+                <!-- Teléfono -->
+                <div class="col-12 col-md-6 mb-3">
+                  <label for="telefono" class="form-label">Teléfono</label>
+                  <input type="text" class="form-control" id="telefono" name="telefono"
+                    placeholder="Ingrese el número de teléfono" required />
+                </div>
+
+                <!-- Observaciones -->
+                <div class="col-12 mb-3">
+                  <label for="observaciones" class="form-label">Observaciones</label>
+                  <textarea class="form-control" id="observaciones" name="observaciones" rows="3"
+                    placeholder="Ingrese observaciones adicionales" required></textarea>
+                </div>
+
+                <!-- Botón Enviar -->
+                <div class="col-12 text-center">
+                  <button style="width: 200px" type="submit" class="btn btn-primary">
+                    Enviar
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="container text-center my-5">
+      <h1 class="display-4">Métricas Residencias</h1>
+      <p class="lead">Selección de Proyectos</p>
+
+      <div class="row mt-4">
+        <!-- Sección de Requisitos -->
+        <div class="col-md-6">
+          <div class="card border-0">
+            <img src="https://via.placeholder.com/300x200" class="card-img-top mx-auto" alt="Imagen de requisitos"
+              style="max-width: 100%; height: auto;">
+            <div class="card-body">
+              <h5 class="card-title font-weight-bold">¿Qué requisitos debo cubrir para darme de alta?</h5>
+              <ul class="list-unstyled text-start">
+                <li class="d-flex align-items-center">
+                  <i class="bi bi-check-circle-fill text-primary me-2"></i> Acreditación del Servicio Social.
+                </li>
+                <li class="d-flex align-items-center">
+                  <i class="bi bi-check-circle-fill text-primary me-2"></i> Acreditación de actividades complementarias.
+                </li>
+                <li class="d-flex align-items-center">
+                  <i class="bi bi-check-circle-fill text-primary me-1"></i> Tener aprobado al menos el 80% de créditos
+                  de su plan de estudios.
+                </li>
+                <li class="d-flex align-items-center">
+                  <i class="bi bi-check-circle-fill text-primary me-2"></i> No contar con ninguna asignatura en
+                  condiciones de “curso especial”.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sección de Selección de Proyectos -->
+        <div class="col-md-6">
+          <div class="card border-0">
+            <img src="https://via.placeholder.com/300x200" class="card-img-top mx-auto"
+              alt="Imagen de selección de proyectos" style="max-width: 100%; height: auto;">
+            <div class="card-body">
+              <h5 class="card-title font-weight-bold">Selección de Proyectos</h5>
+              <ul class="list-unstyled text-start">
+                <li class="d-flex  ">
+                  <i class="bi bi-check-circle-fill text-primary me-2 my-1"></i> A través de banco de proyectos:
+                  Selección en un banco de proyectos de Residencias Profesionales relativos a su carrera o
+                  interdisciplinarios, integradores o de educación dual.
+                </li>
+                <li class="d-flex ">
+                  <i class="bi bi-check-circle-fill text-primary me-2 my-1"></i> Proyectos de gestión propia: Si existe
+                  una propuesta de un proyecto por parte del estudiante, este debe ser avalado por la Academia y
+                  autorizado por el (la) Jefe(a) del Departamento Académico.
+                </li>
+                <li class="d-flex ">
+                  <i class="bi bi-check-circle-fill text-primary me-2 my-1"></i> Por experiencia laboral: En el caso de
+                  que el estudiante sea trabajador de alguna empresa, organismo o dependencia, puede proponer su propio
+                  proyecto, el cual debe ser avalado por la Academia y autorizado por el (la) Jefe(a) del Departamento
+                  Académico.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sección de Registro -->
+      <div class="mt-5">
+        <h5 class="font-weight-bold">¿Cómo me registro?</h5>
+        <p>Dirigirse al Coordinador de Carrera</p>
+        <p>El proyecto de Residencia Profesional puede realizarse de manera individual, grupal o interdisciplinaria;
+          dependiendo de los requerimientos, condiciones y características del proyecto de la empresa, organismo o
+          dependencia.</p>
+      </div>
+    </div>
+
+
+  </div>
+
+  <!-- Footer -->
+
+  <footer class=" text-white text-center text-lg-start" style="background-color: #8a2036;">
+    <div class="container pt-3">
+      <div class="row">
+        <!-- Copyright Information -->
+        <div class="col-lg-5 col-md-12 mb-4 mb-md-0 d-flex flex-column justify-content-center align-items-center">
+          <p class="mb-0">
+            © 2024 Tecnológico de Estudios Superiores de Cuautitlán Izcalli.
+            Todos los derechos reservados.
+          </p>
+        </div>
+
+        <!-- Contact Information -->
+        <div
+          class="col-lg-3 col-md-6 mb-4 mb-md-0 text-center d-flex flex-column justify-content-center align-items-center">
+          <h5 class="text-uppercase fs-6">Contacto</h5>
+          <p class="fs-6">
+            Av. Nopaltepec s/n Col. La Perla C.P. 54740, Cuautitlán Izcalli,
+            Estado de México<br />
+            Tel: (55) 58 64 31 70-71
+          </p>
+        </div>
+
+        <!-- Social Media Icons -->
+        <div
+          class="col-lg-4 col-md-6 mb-4 mb-md-0 text-center d-flex flex-column align-items-center justify-content-center">
+          <h5 class="text-uppercase fs-6">Síguenos en:</h5>
+          <div class="d-flex justify-content-center">
+            <a href="https://web.whatsapp.com/" class="text-white me-3 fs-5">
+              <i class="bi bi-whatsapp"></i>
+            </a>
+            <a href="https://www.facebook.com/Comunidad.Tesci" class="text-white me-3 fs-5">
+              <i class="bi bi-facebook"></i>
+            </a>
+            <a href="https://x.com/ComunidadTESCI?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"
+              class="text-white me-3 fs-5">
+              <i class="bi bi-twitter"></i>
+            </a>
+            <a href="https://www.instagram.com/comunidad.tesci/p/Cn4jF-CObxF/" class="text-white me-3 fs-5">
+              <i class="bi bi-instagram"></i>
+            </a>
+            <a href="https://tesci.edomex.gob.mx/" class="text-white fs-5">
+              <i class="bi bi-globe"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- Fin Footer -->
+
+  <!-- iconos redes Social -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css" />
+  <!--FIN iconos redes Social -->
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
