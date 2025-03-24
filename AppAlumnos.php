@@ -290,68 +290,56 @@ WHERE u_alumno.correo_electronico = ?";
 <body>
 
   <!-- Barra de navegación fija -->
-  <nav class="border border-2 rounded-top-2 navbar navbar-expand-lg navbar-light navbar-custom">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="Inicio.html">
-        <img src="img/logo/rino.png" alt="Logo" width="70" height="40" />
-      </a>
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link fw-bolder" style="color: #56212f;">ADMINISTRADOR DE RESIDENCIAS</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link fw-bolder" style="color: #BC955B;">Alumno</a>
-        </li>
-      </ul>
+<nav class="border border-2 rounded-top-2 navbar navbar-expand-lg navbar-light navbar-custom">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="Inicio.html">
+      <img src="Recursos\img\logo\rino.png" alt="Logo" width="70" height="40" />
+    </a>
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <li class="nav-item">
+        <a class="nav-link fw-bolder" style="color: #56212f;">ADMINISTRADOR DE RESIDENCIAS</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link fw-bolder" style="color: #BC955B;">Alumno</a>
+      </li>
+    </ul>
 
-      <form class="d-flex">
-        <div class="input-group">
-          <span class="input-group-text"><i class="bi bi-search"></i></span>
-          <input class="form-control search-bar me-2" type="search" placeholder="Buscar" aria-label="Buscar" />
-        </div>
-        <button class="btn btn-search" type="submit">Buscar</button>
-      </form>
+    <!-- Leyenda y Barra de progreso -->
+    <div class="d-flex align-items-center">
+      <!-- Leyenda de progreso -->
+      <span class="me-3" style="font-size: 16px; font-weight: bold;">Progreso del Alumno:</span>
 
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
-        <li class="nav-item">
-          <a class="nav-link" style="color: black; font-size: 18px" href="#"><i class="bi bi-bell-fill"></i></a>
-        </li>
-
-        <div class="dropdown">
-          <a class="btn btn-outline-dark dropdown-toggle btn m-2 d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="bi bi-person-circle" style="font-size: 20px; margin-right: 8px;"></i>
-            <span style="font-size: 18px; margin-bottom: 0;"><?php echo "$nombre_alumno "; ?></span>
-          </a>
-
-
-
-          <ul class="dropdown-menu dropdown-menu-end">
-            <li><a class="dropdown-item" href="#"><?php echo "Alumno"; ?></a></li>
-
-
-            <li><a class="dropdown-item" href="#"><?php echo "<p>Nombre:  $nombre_alumno $apellido_paterno $apellido_materno</p>"; ?></a></li>
-
-
-
-
-            <li><a class="dropdown-item" href="#"><?php echo "<p>Correo electrónico:  $correo_alumno</p>"; ?></a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li><a class="dropdown-item" href="#">
-
-            <li><a class="dropdown-item" href="#"><?php echo "<p>Teléfono: $telefono_alumno</p>"; ?></a></li>
-            </a></li>
-
-          </ul>
-        </div>
-
-
-
-      </ul>
+      <!-- Barra de progreso sin animación -->
+      <div class="progress" style="width: 300px; height: 20px;">
+        <div class="progress-bar bg-success" role="progressbar" style="width: 40%;">40%</div>
+      </div>
     </div>
-  </nav>
+
+    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
+      <li class="nav-item">
+        <a class="nav-link" style="color: black; font-size: 18px" href="#"><i class="bi bi-bell-fill"></i></a>
+      </li>
+
+      <div class="dropdown">
+        <a class="btn btn-outline-dark dropdown-toggle btn m-2 d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="bi bi-person-circle" style="font-size: 20px; margin-right: 8px;"></i>
+          <span style="font-size: 18px; margin-bottom: 0;"><?php echo "$nombre_alumno "; ?></span>
+        </a>
+
+        <ul class="dropdown-menu dropdown-menu-end">
+          <li><a class="dropdown-item" href="#"><?php echo "Alumno"; ?></a></li>
+          <li><a class="dropdown-item" href="#"><?php echo "<p>Nombre:  $nombre_alumno $apellido_paterno $apellido_materno</p>"; ?></a></li>
+          <li><a class="dropdown-item" href="#"><?php echo "<p>Correo electrónico:  $correo_alumno</p>"; ?></a></li>
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+          <li><a class="dropdown-item" href="#"><?php echo "<p>Teléfono: $telefono_alumno</p>"; ?></a></li>
+        </ul>
+      </div>
+    </ul>
+  </div>
+</nav>
+
 
   <!-- Modal -->
   <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
@@ -441,6 +429,34 @@ WHERE u_alumno.correo_electronico = ?";
       </div>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       <!-- Información adicional -->
       <div class="row g-3 mt-4">
         <div class="card-header  text-white text-center" style="background-color: #8a2036;">
@@ -467,6 +483,13 @@ WHERE u_alumno.correo_electronico = ?";
           </div>
         </div>
 
+
+
+
+
+
+
+        
 
 
 
@@ -556,6 +579,55 @@ WHERE u_alumno.correo_electronico = ?";
 
 
       </div>
+
+      <!-- fin de Datos del alumno  -->
+
+      
+
+      <!-- Subir Evidencias -->
+
+
+
+
+      <div class="card form-container my-4 shadow-lg rounded-4 border-0 mx-auto" style="max-width: 900px;">
+    <div class="card-body p-4">
+        <h2 class="text-center mb-4 fw-bold text-black">Subir Evidencias</h2>
+
+        <div class="progress mt-3 mb-3" role="progressbar" aria-label="Example with label" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+            <div class="progress-bar bg-success" style="width: 25%">25%</div>
+        </div>
+
+        <form enctype="multipart/form-data" method="POST" action="ruta/a/tu/servidor" id="uploadForm">
+            <div class="input-group mb-3">
+                <span class="input-group-text bg-primary text-white border-0"><i class="bi bi-upload"></i></span>
+                <input class="form-control border-0 shadow-sm" type="file" name="evidencia" accept=".jpg, .jpeg, .png, .pdf" required id="fileInput" />
+            </div>
+            <div class="d-flex justify-content-center gap-2">
+                <button class="btn btn-primary w-40 fw-bold shadow-sm btn-upload " type="submit">
+                    <i class="bi bi-cloud-upload"></i> Subir Evidencia
+                </button>
+                <button class="btn btn-danger w-40 fw-bold shadow-sm btn-upload" type="submit">
+                    <i class="bi bi-trash3"></i> Eliminar
+                </button>
+                
+            </div>
+
+            <!-- Barra de carga -->
+            <div class="mt-3 d-none" id="progressContainer">
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 1%;" id="progressBar"></div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+      
+   <!--Fin Subir Evidencias -->
+
+
+
 
       <!-- Información adicional -->
       <div class="row g-3 mt-5" id="residencias">
